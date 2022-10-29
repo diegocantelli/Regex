@@ -7,3 +7,15 @@ const texto = 'Ola ola testo testo repetido repetido'
 const regex = /(\w+)\s\1/gi
 
 console.log(texto.match(regex))
+
+const texto2 = `<strong>strong tag</strong><i>italic tag</i>`
+
+// *?: ao utilizar o ? na frente do quantificador, ele torna o quantificador nao greedy, ou seja, ira pegar apenas os elementos
+// que dao match e ira separa-los no array de retorno do regex
+const regex2 = /<[^>]+>.*?<\/[^>]+>/gim
+
+console.log(texto2.match(regex2))
+
+// caso as tags de abertura e fechamento nao sejam as mesmas, nao irá dar match
+const regex3 = /<(\w*)[^>]*>.*?</\1>/gmi
+console.log(texto2.match(regex3))
